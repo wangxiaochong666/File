@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<div class="captcha">
+  <img src="http://www.sf-express.com/sf-service-owf-web/service/captcha/sms">
+</div>
+<script>
+  
+  // document.querySelector('.captcha').onclick=function(){
+  //   this.querySelector('img').src='http://www.sf-express.com/sf-service-owf-web/service/captcha/sms?now'+new Date().getTime();
+  // }
+
+  
+  function loadImage(url){
+    var img = new Image();
+    var now = new Date().getTime();
+    img.src=url+'?now='+now;
+    return img;
+  };
+  document.querySelector('.captcha').onclick=function(){
+    var img = loadImage('http://www.sf-express.com/sf-service-owf-web/service/captcha/sms');
+    img.onload = function() {
+      document.querySelector('.captcha').innerHTML = '';
+      document.querySelector('.captcha').appendChild(img);
+    };
+  }
+</script>
+
+</body>
+</html>
